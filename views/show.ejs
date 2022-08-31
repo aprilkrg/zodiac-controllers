@@ -1,0 +1,15 @@
+<%- include("layout.ejs") %>
+
+<a href="/">Back to signs</a>
+
+<h2><%= element.type %></h2>
+<ol>
+    <% element.signs.forEach(sign => { %>
+        <li><%= sign %></li>
+    <% }) %>
+</ol>
+<ul>
+    <% element.traits.forEach(trait => { %>
+        <li><%= trait %></li>
+    <% }) %>
+</ul>

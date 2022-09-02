@@ -6,6 +6,7 @@
 // NOTE layout ejs can be included like a partial, come back to later
 
 const express = require("express")
+const expressEjsLayouts = require("express-ejs-layouts")
 const app = express()
 
 const PORT = 3000 
@@ -32,6 +33,8 @@ const elements = {
         traits: ["grounded", "helpful", "practical", "realistic", "materialistic", "dependable"]
     }
 }
+
+app.use(expressEjsLayouts)
 
 // SET THE VIEW ENGINE
 app.set("view engine", "ejs")

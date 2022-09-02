@@ -1,97 +1,71 @@
-// require express package and invoke
+// set up the express app
+// organize the graphic into data
+// stub up routes
+// create view files, render
+
 const express = require("express")
 const app = express()
-// create port variable
-const PORT = 3000
-// configuration ^^^ (THIS SHOULD ALWAYS BE BEFORE THE ROUTES)
 
-// data created from the zodiac.jpeg
-// a skill to work on is looking at information, organizing it, and translating it to usable javascript data 
-// for `elements` I could either use an array or an object. I started with an array, but then thinking about how I was gonna pass the data to the `res.send` I wanted to be able to say something simple like `elements.air` so I could be sure what I was getting, instead of using an index number. 
+const PORT = 3000 
+
 const elements = {
-    air: { 
-        type: "air",
-        signs: ["Aquarius", "Gemini", "Libra"], 
+    air: {
+        name: "air",
+        signs: ["aquarius", "geminin", "libra"],
         traits: ["movement", "creativity", "action", "adventure", "exciting", "easily provoked"]
     },
     water: {
-        type: "water",
-        signs: ["Pisces", "Cancer", "Scorpio"], 
+        name: "water",
+        signs: ["pisces", "cancer", "scorpio"],
         traits: ["private", "mysterious", "pyshic", "charming", "emotional", "sensitive"]
     },
     fire: {
-        type: "fire",
-        signs: ["Aries", "Leo", "Sagittarius"], 
-        traits: ["passionate", "strong emotions", "tempermental", "energetic", "accomplished", "interesting"]
+        name: "fire",
+        signs: ["aries", "leo", "sagittarius"],
+        traits: ["passionate", "strong emotions", "tempermental", "energetic", "accompli,sed", "interesting"]
     },
     earth: {
-        type: "earth",
-        signs: ["Taurus", "Virgo", "Capricorn"], 
+        name: "earth",
+        signs: ["taurus", "virgo", "capricorn"],
         traits: ["grounded", "helpful", "practical", "realistic", "materialistic", "dependable"]
     }
 }
-// HOME ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/"
+
+// SET THE VIEW ENGINE
+app.set("view engine", "ejs")
+
+// home route = localhost:3000/
+// HTTP verb = GET   URL pattern = "/"
 app.get("/", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("HOME PAGE")
-    // // SEND FILE
-    res.sendFile(__dirname+'/views/index.html');
-    // // SEND VIEW
-    // res.render("index.ejs")
+    // res.send("This is the home page")
+    res.render("index")
 })
 
-// AIR ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/air"
+// AIR route = localhost:3000/air
+// HTTP verb = GET   URL pattern = "/air"
 app.get("/air", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("AIR")
-    // // SEND DATA
-    // res.json(elements.air)
-    // // SEND VIEW
-    res.render("show.ejs", {element: elements.air})
+    res.send("AIR")
 })
 
-// WATER ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/water"
+// WATER route = localhost:3000/water
+// HTTP verb = GET   URL pattern = "/water"
 app.get("/water", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("WATER")
-    // // SEND DATA
-    // res.json(elements.water)
-    // // SEND VIEW
-    res.render("show.ejs", {element: elements.water})
+    res.send("WATER")
 })
 
-// EARTH ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/earth"
-app.get("/earth", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("EARTH")
-    // // SEND DATA
-    // res.json(elements.earth)
-    // // SEND VIEW
-    res.render("show.ejs", {element: elements.earth})
-})
-
-// FIRE ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/fire"
+// FIRE route = localhost:3000/fire
+// HTTP verb = GET   URL pattern = "/fire"
 app.get("/fire", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("FIRE")
-    // // SEND DATA
-    // res.json(elements.fire)
-    // // SEND VIEW
-    res.render("show.ejs", {element: elements.fire})
+    res.send("FIRE")
+})
+
+// EARTH route = localhost:3000/earth
+// HTTP verb = GET   URL pattern = "/earth"
+app.get("/earth", (req, res) => {
+    res.send("EARTH")
 })
 
 
-// create listener (THIS SHOULD ALWAYS BE AT THE BOTTOM)
 app.listen(PORT, () => {
-    console.log(`Server live and listening on port ${PORT}`)
+    console.log(`Cicadas singing on port ${PORT}`)
 })

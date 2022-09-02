@@ -3,6 +3,8 @@
 // stub up routes
 // create view files, render
 
+// NOTE layout ejs can be included like a partial, come back to later
+
 const express = require("express")
 const app = express()
 
@@ -44,25 +46,33 @@ app.get("/", (req, res) => {
 // AIR route = localhost:3000/air
 // HTTP verb = GET   URL pattern = "/air"
 app.get("/air", (req, res) => {
-    res.send("AIR")
+    // ROUTE CHECK
+    // res.send("AIR")
+    // DATA CHECK
+    // res.json(elements.air)
+    // TEMPLATE
+    res.render("show", {element: elements.air})
 })
 
 // WATER route = localhost:3000/water
 // HTTP verb = GET   URL pattern = "/water"
 app.get("/water", (req, res) => {
-    res.send("WATER")
+    // res.send("WATER")
+    res.render("show", {element: elements.water})
 })
 
 // FIRE route = localhost:3000/fire
 // HTTP verb = GET   URL pattern = "/fire"
 app.get("/fire", (req, res) => {
-    res.send("FIRE")
+    // res.send("FIRE")
+    res.render("show", {element: elements.fire})
 })
 
 // EARTH route = localhost:3000/earth
 // HTTP verb = GET   URL pattern = "/earth"
 app.get("/earth", (req, res) => {
-    res.send("EARTH")
+    // res.send("EARTH")
+    res.render("show", {element: elements.earth})
 })
 
 

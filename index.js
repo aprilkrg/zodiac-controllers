@@ -36,8 +36,10 @@ const elements = {
 app.get("/", (req, res) => {
     // // ROUTE CHECK
     // res.send("HOME PAGE")
+    // // SEND FILE
+    res.sendFile(__dirname+'/views/index.html');
     // // SEND VIEW
-    res.render("index.ejs")
+    // res.render("index.ejs")
 })
 
 // AIR ROUTE

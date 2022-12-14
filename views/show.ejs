@@ -1,15 +1,16 @@
-<%- include("layout.ejs") %>
+<%- include("partials/header.ejs") %>
 
-<a href="/">Back to signs</a>
+<a href="/">Home</a>
 
-<h2><%= element.type %></h2>
-<ol>
-    <% element.signs.forEach(sign => { %>
-        <li><%= sign %></li>
-    <% }) %>
-</ol>
+<% signs.forEach(sign => { %>
+    <%= sign %>
+<% }) %>
+
+<p>Traits</p>
 <ul>
-    <% element.traits.forEach(trait => { %>
-        <li><%= trait %></li>
-    <% }) %>
+<% traits.forEach(trait => { %>
+   <li><%= trait %></li>
+<% }) %>
 </ul>
+
+<%- include("partials/footer.ejs") %>

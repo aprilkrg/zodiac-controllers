@@ -1,6 +1,5 @@
 const express = require("express")
-const app = express()
-const PORT = 3000
+const router = express.Router()
 
 const elements = {
     air: {
@@ -21,22 +20,14 @@ const elements = {
     }
 }
 
-// controllers
-app.use("/water", require("./controllers/water"))
-app.use("/air", require("./controllers/air"))
-app.use("/earth", require("./controllers/earth"))
-app.use("/fire", require("./controllers/fire"))
-
-// routes
-// full url is localhost:3000/
-// GET /
-app.get("/", function(req, res) {
-    // check the route
-    // res.send("home page")
-    // render
-    res.render("index.ejs")
+// full url is loaclhost:3000/earth
+// GET /earth
+router.get("/", function(req, res) {
+    // res.send("EARTH")
+    // rendering data with view
+    const signs = elements.earth.signs
+    const traits = elements.earth.traits
+    res.render("show.ejs", {signs:signs, traits:traits})  
 })
 
-app.listen(PORT, function(){
-    console.log("server is running on port " + PORT)
-})
+module.exports = router

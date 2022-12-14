@@ -26,6 +26,13 @@ router.get("/", function(req, res) {
     // rendering data with view
     const signs = elements.fire.signs
     const traits = elements.fire.traits
-    res.render("show.ejs", {signs:signs, traits:traits})  
+    res.render("show.ejs", {signs:signs, traits:traits, element: "fire"})  
 })
+
+router.get("/:sign", function(req,res) {
+    // res.send(req.params.sign)
+    const symbol = req.params.sign
+    res.render("sign.ejs", {symbol: req.params.sign})
+})
+
 module.exports = router

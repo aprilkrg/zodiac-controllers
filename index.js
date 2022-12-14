@@ -21,6 +21,9 @@ const elements = {
     }
 }
 
+// middlewares
+app.use(express.static("public"))
+
 // controllers
 app.use("/water", require("./controllers/water"))
 app.use("/air", require("./controllers/air"))

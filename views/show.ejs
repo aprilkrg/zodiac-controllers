@@ -10,9 +10,15 @@
     <h1><%= element.type %></h1>
     <a href="/">Home</a>
     <ul>
+        <% element.signs.forEach((sign) => { %>
+            <li><a href="/<%= element.type %>/<%= sign %>"><%= sign %></a></li>
+        <% }) %>
+    </ul>
+    <ul>
         <% element.traits.forEach((trait) => { %>
             <li><%= trait %></li>
         <% }) %>
     </ul>
+
 </body>
 </html>

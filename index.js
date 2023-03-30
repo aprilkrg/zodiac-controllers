@@ -29,6 +29,13 @@ const elements = {
 
 // set the view engine
 app.set("view engine", "ejs")
+app.use(express.static("public"))
+
+// CONTROLLERS
+app.use("/air", require("./controllers/air"))
+// app.use("/water", require("./controllers/water"))
+app.use("/earth", require("./controllers/earth"))
+// app.use("/fire", require("./controllers/fire"))
 
 // ROUTES
 // http GET url localhost:8000/
@@ -37,11 +44,7 @@ app.get("/", (req, res) => {
     res.render("index")
 })
 
-// air
-// http GET url localhost:8000/air
-app.get("/air", (req, res) => {
-    res.render("show", {element: elements.air})
-})
+
 // water
 // http GET url localhost:8000/water
 app.get("/water", (req, res) => {

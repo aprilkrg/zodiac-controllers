@@ -1,15 +1,18 @@
-<%- include("layout.ejs") %>
-
-<a href="/">Back to signs</a>
-
-<h2><%= element.type %></h2>
-<ol>
-    <% element.signs.forEach(sign => { %>
-        <li><%= sign %></li>
-    <% }) %>
-</ol>
-<ul>
-    <% element.traits.forEach(trait => { %>
-        <li><%= trait %></li>
-    <% }) %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%= element.type %></h1>
+    <a href="/">Home</a>
+    <ul>
+        <% element.traits.forEach((trait) => { %>
+            <li><%= trait %></li>
+        <% }) %>
+    </ul>
+</body>
+</html>

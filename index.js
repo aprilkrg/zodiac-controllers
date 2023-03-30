@@ -1,13 +1,9 @@
-// require express package and invoke
 const express = require("express")
 const app = express()
-// create port variable
-const PORT = 3000
-// configuration ^^^ (THIS SHOULD ALWAYS BE BEFORE THE ROUTES)
 
-// data created from the zodiac.jpeg
-// a skill to work on is looking at information, organizing it, and translating it to usable javascript data 
-// for `elements` I could either use an array or an object. I started with an array, but then thinking about how I was gonna pass the data to the `res.send` I wanted to be able to say something simple like `elements.air` so I could be sure what I was getting, instead of using an index number. 
+const PORT = 8000
+
+// graphic represented as an object
 const elements = {
     air: { 
         type: "air",
@@ -30,68 +26,38 @@ const elements = {
         traits: ["grounded", "helpful", "practical", "realistic", "materialistic", "dependable"]
     }
 }
-// HOME ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/"
+
+// set the view engine
+app.set("view engine", "ejs")
+
+// ROUTES
+// http GET url localhost:8000/
+// home route
 app.get("/", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("HOME PAGE")
-    // // SEND FILE
-    res.sendFile(__dirname+'/views/index.html');
-    // // SEND VIEW
-    // res.render("index.ejs")
+    res.render("index")
 })
 
-// AIR ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/air"
+// air
+// http GET url localhost:8000/air
 app.get("/air", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("AIR")
-    // // SEND DATA
-    // res.json(elements.air)
-    // // SEND VIEW
-    res.render("show.ejs", {element: elements.air})
+    res.render("show", {element: elements.air})
 })
-
-// WATER ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/water"
+// water
+// http GET url localhost:8000/water
 app.get("/water", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("WATER")
-    // // SEND DATA
-    // res.json(elements.water)
-    // // SEND VIEW
-    res.render("show.ejs", {element: elements.water})
+    res.render("show", {element: elements.water})
 })
-
-// EARTH ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/earth"
+// earth
+// http GET url localhost:8000/earth
 app.get("/earth", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("EARTH")
-    // // SEND DATA
-    // res.json(elements.earth)
-    // // SEND VIEW
-    res.render("show.ejs", {element: elements.earth})
+    res.render("show", {element: elements.earth})
 })
-
-// FIRE ROUTE
-// HTTP method = GET
-// URL pattern = "localhost:3000/fire"
+// fire
+// http GET url localhost:8000/fire
 app.get("/fire", (req, res) => {
-    // // ROUTE CHECK
-    // res.send("FIRE")
-    // // SEND DATA
-    // res.json(elements.fire)
-    // // SEND VIEW
-    res.render("show.ejs", {element: elements.fire})
+    res.render("show", {element: elements.fire})
 })
 
-
-// create listener (THIS SHOULD ALWAYS BE AT THE BOTTOM)
 app.listen(PORT, () => {
-    console.log(`Server live and listening on port ${PORT}`)
+    console.log(`smooth smooth sounds of javascript coming from port ${PORT}`)
 })

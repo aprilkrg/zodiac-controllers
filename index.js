@@ -33,9 +33,9 @@ app.use(express.static("public"))
 
 // CONTROLLERS
 app.use("/air", require("./controllers/air"))
-// app.use("/water", require("./controllers/water"))
+app.use("/water", require("./controllers/water"))
 app.use("/earth", require("./controllers/earth"))
-// app.use("/fire", require("./controllers/fire"))
+app.use("/fire", require("./controllers/fire"))
 
 // ROUTES
 // http GET url localhost:8000/
@@ -44,22 +44,6 @@ app.get("/", (req, res) => {
     res.render("index")
 })
 
-
-// water
-// http GET url localhost:8000/water
-app.get("/water", (req, res) => {
-    res.render("show", {element: elements.water})
-})
-// earth
-// http GET url localhost:8000/earth
-app.get("/earth", (req, res) => {
-    res.render("show", {element: elements.earth})
-})
-// fire
-// http GET url localhost:8000/fire
-app.get("/fire", (req, res) => {
-    res.render("show", {element: elements.fire})
-})
 
 app.listen(PORT, () => {
     console.log(`smooth smooth sounds of javascript coming from port ${PORT}`)
